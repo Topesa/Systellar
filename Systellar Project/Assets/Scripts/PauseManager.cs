@@ -60,6 +60,6 @@ public class PauseManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-        Debug.Log("Exit test");
+        //Debug.Log("Exit test");
     }
 }

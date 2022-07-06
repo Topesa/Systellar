@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OrbitSimulation : MonoBehaviour
 {
-    readonly float G = 100f;    
+    readonly float G = 10f;    
  
     GameObject[] planets;
 

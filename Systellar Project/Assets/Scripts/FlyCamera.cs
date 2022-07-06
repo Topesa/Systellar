@@ -17,7 +17,7 @@ public class FlyCamera : MonoBehaviour
     Shift : Increase speed
     Space : Moves camera directly up per its local Y-axis
     */
-
+    
     public float mainSpeed = 10.0f;   // Regular speed
     public float shiftAdd = 25.0f;   // Amount to accelerate when shift is pressed
     public float maxShift = 100.0f;  // Maximum speed when holding shift
@@ -27,7 +27,7 @@ public class FlyCamera : MonoBehaviour
     private float totalRun = 1.0f;
 
     private bool mouseWasDown = false;
-
+        
     void Update()
     {
         // Only handle camera angle when right clicking
@@ -47,11 +47,11 @@ public class FlyCamera : MonoBehaviour
         {
             mouseWasDown = false;
         }
-        // Mouse camera angle done.  
+        // Mouse camera angle done!  
 
         // Keyboard commands
         Vector3 p = GetBaseInput();
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || (Input.GetKey(KeyCode.RightShift)))
         {
             totalRun += Time.deltaTime;
             p *= totalRun * shiftAdd;
@@ -72,33 +72,37 @@ public class FlyCamera : MonoBehaviour
     // Returns the basic values, if it's 0 than it's not active.
     private Vector3 GetBaseInput()
     {
-        Vector3 p_Velocity = new Vector3();
+        Vector3 p_Velocity = new();
 
         // Forwards
-        if (Input.GetKey(KeyCode.W))
+        if ((Input.GetKey(KeyCode.W)))
+        {
             p_Velocity += new Vector3(0, 0, 1);
+        }
 
         // Backwards
-        if (Input.GetKey(KeyCode.S))
+        if ((Input.GetKey(KeyCode.S)))
+        {
             p_Velocity += new Vector3(0, 0, -1);
+        }
 
         // Left
-        if (Input.GetKey(KeyCode.A))
+        if ((Input.GetKey(KeyCode.A)))
             p_Velocity += new Vector3(-1, 0, 0);
 
         // Right
-        if (Input.GetKey(KeyCode.D))
+        if ((Input.GetKey(KeyCode.D)))
             p_Velocity += new Vector3(1, 0, 0);
 
         // Up
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.E))
             p_Velocity += new Vector3(0, 1, 0);
 
         // Down
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.Q))
             p_Velocity += new Vector3(0, -1, 0);
 
-        return p_Velocity;
+        return p_Velocity;       
     }
 }
 

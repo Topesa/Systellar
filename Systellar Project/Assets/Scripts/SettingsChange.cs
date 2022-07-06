@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class SettingsChange: MonoBehaviour
 {
+    private int currentResolutionIndex = 0;
+    
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTextValue;
     [SerializeField] private Slider volumeSlider;
@@ -20,16 +23,30 @@ public class SettingsChange: MonoBehaviour
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private Toggle fullscreenToggle;
 
+    private void Awake()
+    {
+        Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+    }
+
     void Start()
     {
+        
         AudioListener.volume = 0.5f;
 
-        resolutions = Screen.resolutions;
+        if (Screen.fullScreen == true)
+        {
+            fullscreenToggle.isOn = true;
+        }
+        else if (Screen.fullScreen == false)
+        {
+            fullscreenToggle.isOn=false;
+        }
+
+        resolutions = Screen.resolutions.Where(resolution => resolution.refreshRate == 60).ToArray();
         resolutionDropdown.ClearOptions();
 
         List<string> options = new();
 
-        int currentResolutionIndex = 0;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -45,6 +62,7 @@ public class SettingsChange: MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
 
         qualityDropdown.value = 1;
     }
