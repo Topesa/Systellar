@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CameraFollow2 : MonoBehaviour
 {
-    public Transform tr;
+    [SerializeField] private Transform tr;
+    [SerializeField] private float smoothFactor;
+    [SerializeField] private bool lookAt;
+
     private Vector3 cameraOffset;
-    public float smoothFactor;
-    public bool lookAt = false;
 
     private void Start()
     {
@@ -15,6 +16,11 @@ public class CameraFollow2 : MonoBehaviour
     }
 
     private void LateUpdate()
+    {
+        Follow();
+    }
+
+    private void Follow()
     {
         Vector3 newPos = tr.position + cameraOffset;
 

@@ -4,36 +4,24 @@ using UnityEngine;
 
 public class OrbitSimulation : MonoBehaviour
 {
-    readonly float G = 10f;    
- 
-    GameObject[] planets;
+    private readonly float G = 10f;
 
-    void Start()
+    private GameObject[] planets;
+
+    private void Start()
     {
         planets = GameObject.FindGameObjectsWithTag("Planet");
 
         Velocity();
     }
 
-    void Gravity()
+    void FixedUpdate()
     {
-        foreach (GameObject x in planets)
-        {
-            foreach (GameObject y in planets)
-            {
-                if (!x.Equals(y))
-                {
-                    float m1 = x.GetComponent<Rigidbody>().mass;
-                    float m2 = y.GetComponent<Rigidbody>().mass;
-                    float r = Vector3.Distance(x.transform.position, y.transform.position);
+        Gravity();
 
-                    x.GetComponent<Rigidbody>().AddForce((y.transform.position - x.transform.position).normalized * (G * (m1 * m2) / Mathf.Pow(r, 2)));
-                }
-            }
-        }
     }
 
-    void Velocity()
+    private void Velocity()
     {
         foreach (GameObject x in planets)
         {
@@ -52,8 +40,21 @@ public class OrbitSimulation : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void Gravity()
     {
-        Gravity();
+        foreach (GameObject x in planets)
+        {
+            foreach (GameObject y in planets)
+            {
+                if (!x.Equals(y))
+                {
+                    float m1 = x.GetComponent<Rigidbody>().mass;
+                    float m2 = y.GetComponent<Rigidbody>().mass;
+                    float r = Vector3.Distance(x.transform.position, y.transform.position);
+
+                    x.GetComponent<Rigidbody>().AddForce((y.transform.position - x.transform.position).normalized * (G * (m1 * m2) / Mathf.Pow(r, 2)));
+                }
+            }
+        }
     }
 }

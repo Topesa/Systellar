@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SkyBoxOnOff : MonoBehaviour
 {
-    [SerializeField] Camera mainCam;
-    [SerializeField] Skybox mainSkybox;
+    [SerializeField] private Camera mainCam;
+    [SerializeField] private Skybox mainSkybox;
 
     public void DisableSkybox()
     {
@@ -17,6 +17,5 @@ public class SkyBoxOnOff : MonoBehaviour
         {
             mainSkybox.enabled = true;
         }
-        //mainCam.GetComponent<Skybox>().enabled = false;
     }
 }

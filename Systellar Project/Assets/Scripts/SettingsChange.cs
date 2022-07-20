@@ -6,10 +6,10 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public class SettingsChange: MonoBehaviour
+public class SettingsChange : MonoBehaviour
 {
     private int currentResolutionIndex = 0;
-    
+
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTextValue;
     [SerializeField] private Slider volumeSlider;
@@ -21,32 +21,39 @@ public class SettingsChange: MonoBehaviour
 
     [Space(15)]
     [SerializeField] private TMP_Dropdown qualityDropdown;
-    [SerializeField] private Toggle fullscreenToggle;
+    [SerializeField] private Toggle fullScreenToggle;
 
     private void Awake()
     {
-        Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+        ResolutionAwake();
     }
 
-    void Start()
+    private void Start()
     {
-        
-        AudioListener.volume = 0.5f;
+        ScreenAudioStart();
+        ResolutionStart();
+    }
+
+    private void ScreenAudioStart()
+    {
+        AudioListener.volume = defaultVolume;
 
         if (Screen.fullScreen == true)
         {
-            fullscreenToggle.isOn = true;
+            fullScreenToggle.isOn = true;
         }
         else if (Screen.fullScreen == false)
         {
-            fullscreenToggle.isOn=false;
+            fullScreenToggle.isOn = false;
         }
+    }
 
+    private void ResolutionStart()
+    {
         resolutions = Screen.resolutions.Where(resolution => resolution.refreshRate == 60).ToArray();
         resolutionDropdown.ClearOptions();
 
         List<string> options = new();
-
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -63,8 +70,12 @@ public class SettingsChange: MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
 
-
         qualityDropdown.value = 1;
+    }
+
+    private void ResolutionAwake()
+    {
+        Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
     }
 
     public void SetResoltion(int resolutionIndex)
@@ -81,7 +92,6 @@ public class SettingsChange: MonoBehaviour
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
-        //Debug.Log("Fullscreen test");
     }
 
     public void VolumeSet(float volume)
@@ -107,12 +117,12 @@ public class SettingsChange: MonoBehaviour
             resolutionDropdown.value = resolutions.Length;
 
             SetFullScreen(true);
-            fullscreenToggle.isOn = true;
+            fullScreenToggle.isOn = true;
 
             AudioListener.volume = defaultVolume;
             volumeSlider.value = defaultVolume;
             volumeTextValue.text = defaultVolume.ToString("0.0");
             VolumeApply();
-        }       
-    }    
+        }
+    }
 }

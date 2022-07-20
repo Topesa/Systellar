@@ -17,7 +17,6 @@ public class SceneManagerControl : MonoBehaviour
 
     public void ExitProgram()
     {
-        // Debug.Log("Exit test");
         Application.Quit();
     }
 }

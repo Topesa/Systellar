@@ -9,7 +9,12 @@ public class CapsIfActive : MonoBehaviour
 
     [SerializeField] private TMP_Text planetText;
 
-    void Update()
+    private void Update()
+    {
+        Caps();
+    }
+
+    private void Caps()
     {
         if (planetPanel.activeInHierarchy)
         {

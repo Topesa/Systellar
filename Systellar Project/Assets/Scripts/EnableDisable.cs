@@ -4,43 +4,45 @@ using UnityEngine;
 
 public class EnableDisable : MonoBehaviour
 {
-    [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject planetsPanel;
 
-    [SerializeField] private GameObject panel2;
+    [SerializeField] private GameObject controlsPanel;
 
-    [SerializeField] private GameObject panel3;
+    [SerializeField] private GameObject distancePanel;
 
     public void EnableDisablePlanets()
     {
-        if (panel.activeInHierarchy)
+        if (planetsPanel.activeInHierarchy)
         {
-            panel.SetActive(false);
+            planetsPanel.SetActive(false);
         }
         else
         {
-            panel.SetActive(true);
+            planetsPanel.SetActive(true);
         }
     }
+
     public void EnableDisableControls()
     {
-        if (panel2.activeInHierarchy)
+        if (controlsPanel.activeInHierarchy)
         {
-            panel2.SetActive(false);
+            controlsPanel.SetActive(false);
         }
         else
         {
-            panel2.SetActive(true);
+            controlsPanel.SetActive(true);
         }
-    } 
+    }
+
     public void EnableDisableDistanceInfo()
     {
-        if (panel3.activeInHierarchy)
+        if (distancePanel.activeInHierarchy)
         {
-            panel3.SetActive(false);
+            distancePanel.SetActive(false);
         }
         else
         {
-            panel3.SetActive(true);
+            distancePanel.SetActive(true);
         }
     }
 

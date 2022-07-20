@@ -17,17 +17,17 @@ public class FlyCamera : MonoBehaviour
     Shift : Increase speed
     Space : Moves camera directly up per its local Y-axis
     */
-    
+
     public float mainSpeed = 10.0f;   // Regular speed
     public float shiftAdd = 25.0f;   // Amount to accelerate when shift is pressed
     public float maxShift = 100.0f;  // Maximum speed when holding shift
     public float camSens = 0.15f;   // Mouse sensitivity
 
-    private Vector3 lastMouse = new Vector3(255, 255, 255);  // kind of in the middle of the screen, rather than at the top (play)
+    private Vector3 lastMouse = new(255, 255, 255);  // kind of in the middle of the screen, rather than at the top (play)
     private float totalRun = 1.0f;
 
     private bool mouseWasDown = false;
-        
+
     void Update()
     {
         // Only handle camera angle when right clicking
@@ -102,7 +102,7 @@ public class FlyCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
             p_Velocity += new Vector3(0, -1, 0);
 
-        return p_Velocity;       
+        return p_Velocity;
     }
 }
 

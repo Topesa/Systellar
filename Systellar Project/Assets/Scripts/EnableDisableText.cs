@@ -6,7 +6,7 @@ public class EnableDisableText : MonoBehaviour
 {
     [SerializeField] private GameObject textPanel;
 
-    public void enableDisableTextPanel()
+    public void EnableDisableTextPanel()
     {
         if (textPanel.activeInHierarchy)
         {

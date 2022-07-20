@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    public static bool gameIsPaused = false;
+    public static bool gameIsPaused;
     public GameObject pauseMenuUI;
     public GameObject mainCanvas;
 
     void Update()
+    {
+        KeyCodeCheck();
+    }
+
+    private void KeyCodeCheck()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -23,6 +28,7 @@ public class PauseManager : MonoBehaviour
             }
         }
     }
+
     public void Resume()
     {
         mainCanvas.SetActive(true);
@@ -31,7 +37,7 @@ public class PauseManager : MonoBehaviour
         gameIsPaused = false;
     }
 
-    void Pause()
+    private void Pause()
     {
         mainCanvas.SetActive(false);
         pauseMenuUI.SetActive(true);
@@ -56,10 +62,9 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
     }
-    
+
     public void Exit()
     {
         Application.Quit();
-        //Debug.Log("Exit test");
     }
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class BackToMainCam : MonoBehaviour
 {
-    public Camera backToCamera;
-    public Canvas mainCanvas;    
-   
+    [SerializeField] private Camera backToCamera;
+    [SerializeField] private Canvas mainCanvas;
+
     public void BackToMain()
     {
         backToCamera.enabled = false;
-        mainCanvas.enabled = false;        
+        mainCanvas.enabled = false;
     }
 }

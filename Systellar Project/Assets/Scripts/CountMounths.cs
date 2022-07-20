@@ -5,12 +5,18 @@ using TMPro;
 
 public class CountMounths : MonoBehaviour
 {
+    [SerializeField] private TMP_Text displayText;
+
     private float timer = 0;
     private float monthDisplay;
     private float yearDisplay;
-    public TMP_Text displayText;
 
     private void Update()
+    {
+        DisplayMonths();
+    }
+
+    private void DisplayMonths()
     {
         timer += Time.deltaTime;
 

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WorldSpaceResolution : MonoBehaviour
 {
-    void Awake()
+    private void Awake()
     {
         RectTransform rt = GetComponent<RectTransform>();
-        float canvasHeight = rt.rect.height;       
+        float canvasHeight = rt.rect.height;
         float desiredCanvasWidth = canvasHeight * Camera.main.aspect;
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, desiredCanvasWidth);
     }

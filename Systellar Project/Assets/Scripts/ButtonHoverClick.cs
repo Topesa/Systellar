@@ -6,7 +6,7 @@ public class ButtonHoverClick : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
 
-    [SerializeField] private AudioClip hoverEffect;    
+    [SerializeField] private AudioClip hoverEffect;
 
     public void HoverSound()
     {

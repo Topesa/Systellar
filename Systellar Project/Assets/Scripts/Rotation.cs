@@ -7,8 +7,8 @@ public class Rotation : MonoBehaviour
     [SerializeField] private Vector3 rotation;
     [SerializeField] private float speed;
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        transform.Rotate(rotation * speed * Time.deltaTime);
+        transform.Rotate(speed * Time.deltaTime * rotation);
     }
 }
