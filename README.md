@@ -1,4 +1,6 @@
-# Systellar
+# Systellar the Solar System simulation
+
+## Description
 **Solar System simulation and planet info made in _Unity3D_ and _C#_ for educational purposes.**
 
 ## Functions 
