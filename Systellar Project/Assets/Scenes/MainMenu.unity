@@ -12754,7 +12754,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 300332287}
         m_TargetAssemblyTypeName: EnableDisableText, Assembly-CSharp
-        m_MethodName: enableDisableTextPanel
+        m_MethodName: EnableDisableTextPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
