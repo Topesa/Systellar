@@ -18,7 +18,6 @@ public class OrbitSimulation : MonoBehaviour
     void FixedUpdate()
     {
         Gravity();
-
     }
 
     private void Velocity()

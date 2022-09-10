@@ -105,24 +105,21 @@ public class SettingsChange : MonoBehaviour
         PlayerPrefs.SetFloat("mainVolume", AudioListener.volume);
     }
 
-    public void ResetButton(string menuType)
+    public void ResetButton()
     {
-        if (menuType == "Default")
-        {
-            qualityDropdown.value = 1;
-            QualitySettings.SetQualityLevel(1);
+        qualityDropdown.value = 1;
+        QualitySettings.SetQualityLevel(1);
 
-            Resolution currentResolution = Screen.currentResolution;
-            Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
-            resolutionDropdown.value = resolutions.Length;
+        Resolution currentResolution = Screen.currentResolution;
+        Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreen);
+        resolutionDropdown.value = resolutions.Length;
 
-            SetFullScreen(true);
-            fullScreenToggle.isOn = true;
+        SetFullScreen(true);
+        fullScreenToggle.isOn = true;
 
-            AudioListener.volume = defaultVolume;
-            volumeSlider.value = defaultVolume;
-            volumeTextValue.text = defaultVolume.ToString("0.0");
-            VolumeApply();
-        }
+        AudioListener.volume = defaultVolume;
+        volumeSlider.value = defaultVolume;
+        volumeTextValue.text = defaultVolume.ToString("0.0");
+        VolumeApply();
     }
 }
